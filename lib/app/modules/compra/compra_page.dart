@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:loja/app/shared/produto_model.dart';
+
 import 'compra_controller.dart';
 
 class CompraPage extends StatefulWidget {
@@ -22,6 +23,13 @@ class _CompraPageState extends ModularState<CompraPage, CompraController> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.produtoModel.nome),
+        actions: <Widget>[
+          IconButton(
+              icon: Icon(Icons.shopping_cart),
+              onPressed: () {
+                Modular.to.pushNamed("/compra/carrinho");
+              })
+        ],
       ),
       body: Column(
         children: <Widget>[
@@ -39,10 +47,9 @@ class _CompraPageState extends ModularState<CompraPage, CompraController> {
                         ],
                       ),
                       Row(children: [
-                        //const Text("Preço: ")
-                      ]
-
-                      )
+                        const Text("Preço: "),
+                        Text("${widget.produtoModel.preco}")
+                      ])
                     ],
                   ))),
         ],

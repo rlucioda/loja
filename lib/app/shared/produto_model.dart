@@ -4,4 +4,5 @@ class ProdutoModel {
   final double preco;
 
   ProdutoModel({this.id, this.nome, this.preco});
+
 }

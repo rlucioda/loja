@@ -1,7 +1,8 @@
-import 'compra_controller.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:dio/dio.dart';
+
+import 'compra_controller.dart';
 import 'compra_page.dart';
+import 'pages/carrinho/carrinho_module.dart';
 
 class CompraModule extends ChildModule {
   @override
@@ -14,7 +15,8 @@ class CompraModule extends ChildModule {
         ModularRouter(Modular.initialRoute,
             child: (_, args) => CompraPage(
                   produtoModel: args.data,
-                ))
+                )),
+        ModularRouter("/carrinho", module: CarrinhoModule()),
       ];
 
   static Inject get to => Inject<CompraModule>.of();
