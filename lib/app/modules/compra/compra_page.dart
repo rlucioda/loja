@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:loja/app/shared/produto_model.dart';
+import 'package:loja/app/shared/models/produto_model.dart';
 
 import 'compra_controller.dart';
 

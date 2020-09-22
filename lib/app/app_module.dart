@@ -1,8 +1,10 @@
-import 'app_controller.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:loja/app/app_widget.dart';
+import 'package:loja/app/shared/db/app_database.dart';
 
+import 'app_controller.dart';
+import 'modules/categoria/categoria_module.dart';
 import 'modules/compra/compra_module.dart';
 import 'modules/loja/loja_module.dart';
 import 'modules/produto/produto_module.dart';
@@ -19,6 +21,7 @@ class AppModule extends MainModule {
         ModularRouter(Modular.initialRoute, module: LojaModule()),
         ModularRouter("/produto", module: ProdutoModule()),
         ModularRouter("/compra", module: CompraModule()),
+        ModularRouter("/categoria", module: CategoriaModule()),
       ];
 
   @override

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:loja/app/shared/produto_model.dart';
+import 'package:loja/app/shared/db/app_database.dart';
+import 'package:loja/app/shared/models/produto_model.dart';
 import 'produto_controller.dart';
 
 class ProdutoPage extends StatefulWidget {
@@ -18,9 +19,41 @@ class _ProdutoPageState extends ModularState<ProdutoPage, ProdutoController> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          actions: <Widget>[
+            RaisedButton(
+              onPressed: () {
+                Modular.to.pushNamed(
+                  "/categoria",
+                  //arguments: ProdutoModel(
+                  //    id: index, nome: "Produto $index", preco: 3.0 * index)
+                );
+              },
+              child: Text("Add Categoria"),
+            ),
+          ],
           title: Text(widget.nomeDaLoja),
         ),
-        body: ListView.builder(
+        body: StreamBuilder<List<Produto>>(
+            //stream: ,
+            initialData: [],
+            builder: (context, snapshot) {
+              List<Produto> list = snapshot.data;
+              return ListView.builder(
+                itemCount: list.length,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    title: Text(list[index].nome),
+                    leading: CircleAvatar(
+                      child: Text(list[index].id.toString()),
+                    ),
+                  );
+                },
+              );
+            }));
+  }
+}
+/********
+ * ListView.builder(
           itemCount: 20,
           itemBuilder: (BuildContext context, int index) {
             return ListTile(
@@ -36,6 +69,7 @@ class _ProdutoPageState extends ModularState<ProdutoPage, ProdutoController> {
               ),
             );
           },
-        ));
-  }
-}
+        )
+ * 
+ * 
+ */
